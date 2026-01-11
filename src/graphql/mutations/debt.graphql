@@ -1,0 +1,3 @@
+mutation CreateDebt($input: CreateDebtInput!) {
+  createDebt(input: $input)
+}
