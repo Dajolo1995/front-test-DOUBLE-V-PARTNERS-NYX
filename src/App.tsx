@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "./tools/desing";
+import RouteApp from "./router";
 
 const App: React.FC = () => {
-  return <Button type="primary"> App</Button>;
+  return <RouteApp />;
 };
 
 export default App;
