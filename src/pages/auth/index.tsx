@@ -1,23 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { getItemFromLocalStorage } from "../../utils/storage";
+import React from "react";
+import Content from "./Content";
+import { showError, showAlert } from "../../utils/alert";
+import { clienteAxios } from "../../config/clienteAxios";
+import { addItemToLocalStorage } from "../../utils/storage";
+import { useNavigate } from "react-router-dom";
 
 const Auth: React.FC = () => {
-  const [stateAuth, setStateAuth] = useState(true);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = getItemFromLocalStorage("user");
-    const verified = getItemFromLocalStorage("verified");
+  const onFinish = async (values: any) => {
+    try {
+      const response = await clienteAxios.post("/auth/login", values);
 
-    if (!user || !verified) {
-      setStateAuth(false);
+      addItemToLocalStorage("user", response.data.users.id);
+      addItemToLocalStorage("verified", response.data.users.isActive);
+
+      if (response.data.users.isActive) {
+        navigate("/");
+      } else {
+        showAlert(
+          "Usuario pendiente de verificacion",
+          "Por favor verifica tu cuenta para continuar",
+          "info"
+        );
+        navigate("/validate-user");
+      }
+    } catch (error) {
+      showError(error);
     }
-  }, []);
+  };
 
-
-
-  console.log(stateAuth);
-
-  return <div>Auth</div>;
+  return <Content onFinish={onFinish} />;
 };
 
 export default Auth;
