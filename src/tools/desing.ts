@@ -9,10 +9,11 @@ export {
   Image,
   Button,
   Form,
-  Input
+  Input,
+  Alert
 } from "antd";
 
 export const { Header, Footer, Sider, Content } = Layout;
 export const { Title, Paragraph, Text, Link } = Typography;
 export const { Item } = Form;
-export const { Password } = Input;
+export const { Password, OTP } = Input;

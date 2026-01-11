@@ -11,3 +11,7 @@ export const showAlert = (
     icon,
   });
 };
+
+export const showError = (error: any) => {
+  showAlert("Error", error?.response?.data?.message || error.message, "error");
+};
