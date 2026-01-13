@@ -76,7 +76,6 @@ const ValidateUser: React.FC = () => {
             style={{ marginBottom: 24 }}
           />
 
-          {/* OTP centrado */}
           <div
             style={{
               display: "flex",

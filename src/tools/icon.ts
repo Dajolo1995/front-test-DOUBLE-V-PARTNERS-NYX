@@ -5,5 +5,6 @@ export {
   MenuUnfoldOutlined,
   HomeOutlined,
   DollarOutlined,
-  UsergroupAddOutlined
+  UsergroupAddOutlined,
+  DownOutlined
 } from "@ant-design/icons";

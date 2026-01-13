@@ -1,4 +1,3 @@
-// src/graphql/apolloClient.ts
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
 export const apolloClient = new ApolloClient({

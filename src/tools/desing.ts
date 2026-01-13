@@ -1,4 +1,4 @@
-import { Layout, Typography, Form, Input, Select, Grid } from "antd";
+import { Layout, Typography, Form, Input, Select, Grid, Dropdown } from "antd";
 
 export {
   ConfigProvider,
@@ -19,7 +19,9 @@ export {
   Tooltip,
   Menu,
   Grid,
-  Space
+  Space,
+  Result,
+  Dropdown
 } from "antd";
 
 export const { Header, Footer, Sider, Content } = Layout;
@@ -27,5 +29,4 @@ export const { Title, Paragraph, Text, Link } = Typography;
 export const { Item } = Form;
 export const { Password, OTP } = Input;
 export const { Option } = Select;
-
 export const { useBreakpoint } = Grid;

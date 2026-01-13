@@ -16,7 +16,6 @@ export const createDebt = async (value: any) => {
       `Se ha creado la deuda de la descripcion ${value.description}`
     );
   } catch (error) {
-    console.log(error);
     showError(error);
   }
 };
@@ -28,7 +27,6 @@ export const getDebts = async () => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
     showError(error);
   }
 };
@@ -41,22 +39,19 @@ export const updateDebt = async (id: string, value: any) => {
       `Se ha actualizado la deuda de la descripcion ${value.description}`
     );
   } catch (error) {
-    console.log(error);
     showError(error);
   }
 };
 
 export const paymentDebts = async (id: string) => {
   try {
-    const response = await clienteAxios.patch(`/debts/${id}/paid`);
+    await clienteAxios.patch(`/debts/${id}/paid`);
 
     showSuccess(
       "Deuda pagada exitosamente",
       `Se ha marcado la deuda con id ${id} como pagada`
     );
-    console.log(response);
   } catch (error) {
-    console.log(error);
     showError(error);
   }
 };

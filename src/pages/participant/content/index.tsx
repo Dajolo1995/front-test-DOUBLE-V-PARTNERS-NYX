@@ -5,10 +5,8 @@ import {
   Col,
   Button,
   Modal,
-  Form,
   Select,
   Option,
-  Item,
 } from "../../../tools/desing";
 import FormParticipants from "./FormParticipants";
 import DebtParticipantsTable from "./TableParticipants";
@@ -18,7 +16,6 @@ interface Props {
   loading: boolean;
   onCloseModal: () => void;
   stateOpenModal: boolean;
-  selectedParticipant: any;
   stateDebts: any;
   onFinish?: any;
   stateUsers: any;
@@ -26,7 +23,7 @@ interface Props {
   selectDebt: any;
   onPay?: (data: any) => void;
   fullDebts: any;
-  getParticipantsDebts: any
+  getParticipantsDebts: any;
 }
 
 const Content: React.FC<Props> = ({
@@ -34,7 +31,6 @@ const Content: React.FC<Props> = ({
   loading,
   onCloseModal,
   stateOpenModal,
-  selectedParticipant,
   stateDebts,
   onFinish,
   stateUsers,
@@ -42,12 +38,16 @@ const Content: React.FC<Props> = ({
   selectDebt,
   fullDebts,
   onPay,
-  getParticipantsDebts
+  getParticipantsDebts,
 }) => {
   return (
     <Row gutter={[16, 16]}>
       <Col xs={24} md={8}>
-        <Select value={selectDebt} style={{ width: "100%" }} onChange={(value) => getParticipantsDebts(value)}>
+        <Select
+          value={selectDebt}
+          style={{ width: "100%" }}
+          onChange={(value) => getParticipantsDebts(value)}
+        >
           {fullDebts.map((debt: any) => (
             <Option key={debt.id} value={debt.id}>
               {debt.description}
@@ -64,7 +64,10 @@ const Content: React.FC<Props> = ({
 
       <Col xs={24}>
         {stateParticipants.length === 0 ? (
-          <Text>No se ha añadido participante a esta deuda</Text>
+          <Text>
+            No se ha añadido participante a la deuda{" "}
+            <span style={{ fontWeight: "bold" }}>{selectDebt}</span>
+          </Text>
         ) : (
           <DebtParticipantsTable data={stateParticipants} onPay={onPay} />
         )}

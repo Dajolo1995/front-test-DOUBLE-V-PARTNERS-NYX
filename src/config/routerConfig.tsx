@@ -4,6 +4,7 @@ import ValidateUser from "../pages/validateUser";
 import Debt from "../pages/debt";
 import type { DefineRoute } from "../interface/router";
 import Participants from "../pages/participant";
+import Home from "../pages/home";
 import { DollarOutlined, UsergroupAddOutlined } from "../tools/icon";
 
 const routerConfig = () => {
@@ -30,13 +31,14 @@ const routerConfig = () => {
       private: false,
     },
     {
-      Path: "/",
+      Path: "/deudas",
       Element: Debt,
       menu: true,
       name: "Deuda",
-      private: false,
+      private: true,
       icon: <DollarOutlined />,
     },
+
     {
       Path: "/participants",
       Element: Participants,
@@ -44,6 +46,14 @@ const routerConfig = () => {
       name: "Participantes",
       private: false,
       icon: <UsergroupAddOutlined />,
+    },
+
+    {
+      Path: "/",
+      Element: Home,
+      menu: false,
+      name: "Inicio",
+      private: false,
     },
   ] as DefineRoute[];
 };

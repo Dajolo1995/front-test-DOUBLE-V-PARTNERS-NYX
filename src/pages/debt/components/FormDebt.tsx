@@ -38,7 +38,6 @@ const FormDebt: React.FC<Props> = ({
       onFinish={onFinish}
       initialValues={stateDataDebt}
     >
-      {/* DESCRIPCIÓN */}
       <Item
         label="Descripción"
         name="description"
@@ -50,7 +49,6 @@ const FormDebt: React.FC<Props> = ({
         <Input placeholder="Ej: Cena viernes" />
       </Item>
 
-      {/* MONTO */}
       <Item
         label="Monto total"
         name="totalAmount"
@@ -68,7 +66,6 @@ const FormDebt: React.FC<Props> = ({
       </Item>
 
 
-      {/* BOTONES */}
       <Row gutter={[8, 8]}>
         <Col span={12}>
           <Button style={{ width: "100%" }} onClick={onCancel}>

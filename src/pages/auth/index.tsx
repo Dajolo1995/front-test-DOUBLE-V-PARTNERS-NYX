@@ -12,8 +12,11 @@ const Auth: React.FC = () => {
     try {
       const response = await clienteAxios.post("/auth/login", values);
 
+      console.log(response);
+
       addItemToLocalStorage("user", response.data.users.id);
       addItemToLocalStorage("verified", response.data.users.isActive);
+      addItemToLocalStorage("nickName", response.data.users.nickname);
 
       if (response.data.users.isActive) {
         navigate("/");

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import AppLayout from "../../components/Layout";
 import Content from "./content";
 import { getDebts } from "../debt/debt";
-import { getUsers, createDebt, getParticipantsByDebt, paymentDebts } from "./participants";
+import {
+  getUsers,
+  createDebt,
+  getParticipantsByDebt,
+  paymentDebts,
+} from "./participants";
 
 const Participants: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -24,12 +29,11 @@ const Participants: React.FC = () => {
     setSelectedParticipant(null);
   };
 
-  // 🔹 Cargar deudas
   const getDebtsData = async () => {
     setLoading(true);
 
     const response = await getDebts();
-    setFullDebts(response)
+    setFullDebts(response);
     const data = response.filter((debt: any) => debt.status !== "PAID");
 
     setStateDebts(data);
@@ -38,13 +42,11 @@ const Participants: React.FC = () => {
     setLoading(false);
   };
 
-  // 🔹 Cargar usuarios
   const getUsersData = async () => {
     const response = await getUsers();
     setStateUsers(response);
   };
 
-  // 🔹 Cargar participantes (DEPENDEN DE selectDebt)
   const getParticipantsDebts = async (debtId: string) => {
     if (!debtId) return;
 
@@ -52,13 +54,11 @@ const Participants: React.FC = () => {
     setStateParticipants(response);
   };
 
-  // 🔥 Primer render → cargar deudas y usuarios
   useEffect(() => {
     getDebtsData();
     getUsersData();
   }, []);
 
-  // 🔥 Cuando cambia la deuda seleccionada → cargar participantes
   useEffect(() => {
     if (stateSelectDebt) {
       getParticipantsDebts(stateSelectDebt);
@@ -82,6 +82,8 @@ const Participants: React.FC = () => {
     setLoading(true);
     await paymentDebts(value);
     await getParticipantsDebts(selectDebt);
+    getDebtsData();
+    getUsersData();
     setLoading(false);
   };
   return (
