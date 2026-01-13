@@ -4,4 +4,5 @@ export interface DefineRoute {
   menu: boolean;
   name: string;
   private: boolean;
+    icon?: React.ReactNode;
 }

@@ -15,3 +15,11 @@ export const showAlert = (
 export const showError = (error: any) => {
   showAlert("Error", error?.response?.data?.message || error.message, "error");
 };
+
+export const showSuccess = (title: string, text?: string) => {
+  return Swal.fire({
+    title,
+    text,
+    icon: "success",
+  });
+};
